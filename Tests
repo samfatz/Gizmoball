@@ -1,0 +1,773 @@
+package Testing;
+import Model.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import physics.LineSegment;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
+public class TestGizmo {
+    Model m;
+    LineSegment lineSegment;
+    CircleBumper circleBumper1 = new CircleBumper("circle1", 20, 20);
+    CircleBumper circleBumper2;
+    TriangleBumper triangleBumper = new TriangleBumper("triangle1", 10, 10);
+    TriangleBumper triangleBumper2;
+    SquareBumper squareBumper1 = new SquareBumper("square1", 15, 15);
+    SquareBumper squareBumper2;
+    Flipper flipper = new Flipper(10,10, 10, 90);
+    Absorber absorber = new Absorber("absorber1", 10,10,10,10);
+    TriangleBumper t1 = new TriangleBumper("t1", 5, 5);
+    SquareBumper sb1 = new SquareBumper("sb1", 10, 10);
+    SquareBumper sb2 = new SquareBumper("sb1", 20, 20);
+    Ball ball = new Ball("ball1",20,20,10,10);
+    // Set up objects to be tested
+    public void setUp() {
+        m = new Model();
+        circleBumper2 = new CircleBumper("circle2", 10, 5);
+        triangleBumper2 = new TriangleBumper("traingle2", 5, 5);
+        squareBumper2 = new SquareBumper("square2", 5, 5);
+        m.addCircleBumper(12,12);
+    }
+    @Test
+    public void testCreateBall(){
+        assertEquals(6.25,ball.getRadius());
+        assertEquals(20,ball.getExactX());
+        assertEquals(20, ball.getExactY());
+        assertTrue(ball != null);
+        assertFalse(ball == ball);
+    }
+    /* Test case for creating a circle bumper */
+    @Test
+    public void testCreateCircleBumper()
+    {
+        assertNotNull(circleBumper1);
+        assertEquals(20,circleBumper1.getExactY());
+        assertEquals(20,circleBumper1.getExactX());
+        assertEquals(12.5D, circleBumper1.getRadius());
+        assertTrue(circleBumper1 != null);
+        assertFalse(circleBumper1 == circleBumper2);
+    }
+    @Test
+    public void testGitUpload(){
+
+    }
+
+    /* Test case for creating a square bumper */
+    @Test
+    public void testCreateSquareBupackage Testing;
+import Model.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import physics.LineSegment;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
+public class TestGizmo {
+    Model m;
+    LineSegment lineSegment;
+    CircleBumper circleBumper1 = new CircleBumper("circle1", 20, 20);
+    CircleBumper circleBumper2;
+    TriangleBumper triangleBumper = new TriangleBumper("triangle1", 10, 10);
+    TriangleBumper triangleBumper2;
+    SquareBumper squareBumper1 = new SquareBumper("square1", 15, 15);
+    SquareBumper squareBumper2;
+    Flipper flipper = new Flipper(10,10, 10, 90);
+    Absorber absorber = new Absorber("absorber1", 10,10,10,10);
+    TriangleBumper t1 = new TriangleBumper("t1", 5, 5);
+    SquareBumper sb1 = new SquareBumper("sb1", 10, 10);
+    SquareBumper sb2 = new SquareBumper("sb1", 20, 20);
+    Ball ball = new Ball("ball1",20,20,10,10);
+    // Set up objects to be tested
+    public void setUp() {
+        m = new Model();
+        circleBumper2 = new CircleBumper("circle2", 10, 5);
+        triangleBumper2 = new TriangleBumper("traingle2", 5, 5);
+        squareBumper2 = new SquareBumper("square2", 5, 5);
+        m.addCircleBumper(12,12);
+    }
+    @Test
+    public void testCreateBall(){
+        assertEquals(6.25,ball.getRadius());
+        assertEquals(20,ball.getExactX());
+        assertEquals(20, ball.getExactY());
+        assertTrue(ball != null);
+        assertFalse(ball == ball);
+    }
+    /* Test case for creating a circle bumper */
+    @Test
+    public void testCreateCircleBumper()
+    {
+        assertNotNull(circleBumper1);
+        assertEquals(20,circleBumper1.getExactY());
+        assertEquals(20,circleBumper1.getExactX());
+        assertEquals(12.5D, circleBumper1.getRadius());
+        assertTrue(circleBumper1 != null);
+        assertFalse(circleBumper1 == circleBumper2);
+    }
+    @Test
+    public void testGitUpload(){
+
+    }
+
+    /* Test case for creating a square bumper */
+    @Test
+    public void testCreateSquareBumper()
+    {
+        assertEquals(15,squareBumper1.getExactX());
+        assertEquals(15,squareBumper1.getExactY());
+        assertEquals(0,squareBumper1.getRadius());
+        assertEquals(25,squareBumper1.getWidth());
+        assertTrue(squareBumper1 != null);
+        assertFalse(squareBumper1.equals(circleBumper1));
+        assertFalse(squareBumper1 == squareBumper2);
+    }
+    /* Test case for creating a Triangle bumper */
+    @Test
+    public void testCreateTriangleBumper()
+    {
+        assertEquals("triangle1",triangleBumper.getID());
+        assertEquals(10, triangleBumper.getExactX());
+        assertEquals(10, triangleBumper.getExactY());
+        assertTrue(triangleBumper != null);
+        assertFalse(triangleBumper == triangleBumper2);
+    }
+    @Test
+    /* Test to ensure no gizmos overlap in the same position */
+    public void testOverlapGizmos()
+    {
+        SquareBumper sb10 = new SquareBumper("sb1",12,12);
+        assertEquals(12,sb10.getExactX());
+        assertEquals(12, sb10.getExactY());
+        assertTrue(m.checkTaken(12, 12));
+    }
+    /* Test case for creating a flipper */
+    @Test
+    public void testCreateFlipper(){
+        Flipper flipper2 = new Flipper(25,25,25,25);
+        assertEquals(10,flipper.getXpos());
+        assertEquals(10,flipper.getYpos());
+        assertEquals(10,flipper.getWidth());
+        assertEquals(90,flipper.getDegree());
+        assertFalse(flipper == flipper2);
+        assertTrue(flipper != null);
+    }
+    /* Test case for creating the absorber */
+    @Test
+    public void testCreateAbsorber(){
+        Absorber absorber2 = new Absorber("absorber2", 15,15,15,15);
+        assertFalse(absorber == absorber2);
+        assertTrue(absorber != null);
+        assertEquals(10, absorber.getX());
+        assertEquals(10, absorber.getY());
+        assertEquals(10,absorber.getWidth());
+    }
+    /* Test Case for moving a bumper */
+    @Test
+    public void testMoveBumper(){
+        //String ID = "S" + x + y;
+        SquareBumper squareBumper3 = new SquareBumper("sqaure3", 10, 10);
+        assertTrue(squareBumper3 == squareBumper3);
+        assertEquals(10,squareBumper3.getExactX());
+        assertEquals(10,squareBumper3.getExactY());
+        System.out.println("X: "+squareBumper3.getExactX());
+        System.out.println("Y: "+squareBumper3.getExactY());
+        squareBumper3 = new SquareBumper("sqaure3", 20, 20);
+        assertEquals(20,squareBumper3.getExactX());
+        assertEquals(20,squareBumper3.getExactY());
+        System.out.println("New X: "+squareBumper3.getExactX());
+        System.out.println("New Y: "+squareBumper3.getExactY());
+    }
+    @Test
+    public void testMoveAbsorber()
+    {
+        Absorber absorber3 = new Absorber("ab3", 25, 25, 25, 25);
+        assertTrue(absorber3== absorber3);
+        assertEquals(25,absorber3.getY());
+        assertEquals(25,absorber3.getX());
+        System.out.println("X: "+absorber3.getX());
+        System.out.println("Y: "+absorber3.getY());
+        absorber3 = new Absorber("ab3", 20, 20, 20, 20);
+        assertEquals(20,absorber3.getX());
+        assertEquals(20,absorber3.getY());
+        System.out.println("New X: "+absorber3.getX());
+        System.out.println("New Y: "+absorber3.getY());
+    }
+    @Test
+    public void testMoveFlipper()
+    {
+        Flipper flipper1 = new Flipper(22,22,22,90);
+        assertTrue( flipper1 == flipper1);
+        assertEquals(22,flipper1.getYpos());
+        assertEquals(22,flipper1.getXpos());
+        System.out.println("X: "+flipper1.getXpos());
+        System.out.println("Y: "+flipper1.getYpos());
+        flipper1 = new Flipper(30,30,30,180);
+        assertEquals(30,flipper1.getXpos());
+        assertEquals(30,flipper1.getYpos());
+        System.out.println("New X: "+flipper1.getXpos());
+        System.out.println("New Y: "+flipper1.getYpos());
+    }
+    @Test
+    public  void deleteBumper(){
+        ArrayList<SquareBumper> SBumper = new ArrayList<>();
+        assertTrue(SBumper.isEmpty());
+        SBumper.add(sb1);
+        SBumper.add(sb2);
+        System.out.println(SBumper.size());
+        assertTrue(SBumper != null);
+        SBumper.remove(sb1);
+        SBumper.remove(sb2);
+        System.out.println(SBumper.size());
+        assertTrue(SBumper.isEmpty());
+    }
+    @Test
+    public  void deleteFlipper(){
+        RightFlipper rightFlipper = new RightFlipper("rf1",35,10);
+        RightFlipper rightFlipper2 = new RightFlipper("rf2",40,15);
+        ArrayList<RightFlipper> rFlipper = new ArrayList<>();
+        assertTrue(rFlipper.isEmpty());
+        rFlipper.add(rightFlipper);
+        rFlipper.add(rightFlipper2);
+        assertFalse(rFlipper.isEmpty());
+        assertTrue(rFlipper != null);
+        System.out.println(rFlipper.size());
+        rFlipper.remove(rightFlipper);
+        System.out.println(rFlipper.size());
+        rFlipper.remove(rightFlipper2);
+        System.out.println(rFlipper.size());
+        assertTrue(rFlipper.isEmpty());
+    }
+    @Test
+    public void deleteAbsorber()
+    {
+    }
+    @Test
+    public void clearGameBoard(){
+        assertFalse(m !=null);
+        m.clearBoard();
+        assertTrue(m == null);
+    }
+}
+mper()
+    {
+        assertEquals(15,squareBumper1.getExactX());
+        assertEquals(15,squareBumper1.getExactY());
+        assertEquals(0,squareBumper1.getRadius());
+        assertEquals(25,squareBumper1.getWidth());
+        assertTrue(squareBumper1 != null);
+        assertFalse(squareBumper1.equals(circleBumper1));
+        assertFalse(squareBumper1 == squareBumper2);
+    }
+    /* Test case for creating a Triangle bumper */
+    @Test
+    public void testCreateTriangleBumper()
+    {
+        assertEquals("triangle1",triangleBumper.getID());
+        assertEquals(10, triangleBumper.getExactX());
+        assertEquals(10, triangleBumper.getExactY());
+        assertTrue(triangleBumper package Testing;
+import Model.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import physics.LineSegment;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
+public class TestGizmo {
+    Model m;
+    LineSegment lineSegment;
+    CircleBumper circleBumper1 = new CircleBumper("circle1", 20, 20);
+    CircleBumper circleBumper2;
+    TriangleBumper triangleBumper = new TriangleBumper("triangle1", 10, 10);
+    TriangleBumper triangleBumper2;
+    SquareBumper squareBumper1 = new SquareBumper("square1", 15, 15);
+    SquareBumper squareBumper2;
+    Flipper flipper = new Flipper(10,10, 10, 90);
+    Absorber absorber = new Absorber("absorber1", 10,10,10,10);
+    TriangleBumper t1 = new TriangleBumper("t1", 5, 5);
+    SquareBumper sb1 = new SquareBumper("sb1", 10, 10);
+    SquareBumper sb2 = new SquareBumper("sb1", 20, 20);
+    Ball ball = new Ball("ball1",20,20,10,10);
+    // Set up objects to be tested
+    public void setUp() {
+        m = new Model();
+        circleBumper2 = new CircleBumper("circle2", 10, 5);
+        triangleBumper2 = new TriangleBumper("traingle2", 5, 5);
+        squareBumper2 = new SquareBumper("square2", 5, 5);
+        m.addCircleBumper(12,12);
+    }
+    @Test
+    public void testCreateBall(){
+        assertEquals(6.25,ball.getRadius());
+        assertEquals(20,ball.getExactX());
+        assertEquals(20, ball.getExactY());
+        assertTrue(ball != null);
+        assertFalse(ball == ball);
+    }
+    /* Test case for creating a circle bumper */
+    @Test
+    public void testCreateCircleBumper()
+    {
+        assertNotNull(circleBumper1);
+        assertEquals(20,circleBumper1.getExactY());
+        assertEquals(20,circleBumper1.getExactX());
+        assertEquals(12.5D, circleBumper1.getRadius());
+        assertTrue(circleBumper1 != null);
+        assertFalse(circleBumper1 == circleBumper2);
+    }
+    @Test
+    public void testGitUpload(){
+
+    }
+
+    /* Test case for creating a square bumper */
+    @Test
+    public void testCreateSquareBumper()
+    {
+        assertEquals(15,squareBumper1.getExactX());
+        assertEquals(15,squareBumper1.getExactY());
+        assertEquals(0,squareBumper1.getRadius());
+        assertEquals(25,squareBumper1.getWidth());
+        assertTrue(squareBumper1 != null);
+        assertFalse(squareBumper1.equals(circleBumper1));
+        assertFalse(squareBumper1 == squareBumper2);
+    }
+    /* Test case for creating a Triangle bumper */
+    @Test
+    public void testCreateTriangleBumper()
+    {
+        assertEquals("triangle1",triangleBumper.getID());
+        assertEquals(10, triangleBumper.getExactX());
+        assertEquals(10, triangleBumper.getExactY());
+        assertTrue(triangleBumper != null);
+        assertFalse(triangleBumper == triangleBumper2);
+    }
+    @Test
+    /* Test to ensure no gizmos overlap in the same position */
+    public void testOverlapGizmos()
+    {
+        SquareBumper sb10 = new SquareBumper("sb1",12,12);
+        assertEquals(12,sb10.getExactX());
+        assertEquals(12, sb10.getExactY());
+        assertTrue(m.checkTaken(12, 12));
+    }
+    /* Test case for creating a flipper */
+    @Test
+    public void testCreateFlipper(){
+        Flipper flipper2 = new Flipper(25,25,25,25);
+        assertEquals(10,flipper.getXpos());
+        assertEquals(10,flipper.getYpos());
+        assertEquals(10,flipper.getWidth());
+        assertEquals(90,flipper.getDegree());
+        assertFalse(flipper == flipper2);
+        assertTrue(flipper != null);
+    }
+    /* Test case for creating the absorber */
+    @Test
+    public void testCreateAbsorber(){
+        Absorber absorber2 = new Absorber("absorber2", 15,15,15,15);
+        assertFalse(absorber == absorber2);
+        assertTrue(absorber != null);
+        assertEquals(10, absorber.getX());
+        assertEquals(10, absorber.getY());
+        assertEquals(10,absorber.getWidth());
+    }
+    /* Test Case for moving a bumper */
+    @Test
+    public void testMoveBumper(){
+        //String ID = "S" + x + y;
+        SquareBumper squareBumper3 = new SquareBumper("sqaure3", 10, 10);
+        assertTrue(squareBumper3 == squareBumper3);
+        assertEquals(10,squareBumper3.getExactX());
+        assertEquals(10,squareBumper3.getExactY());
+        System.out.println("X: "+squareBumper3.getExactX());
+        System.out.println("Y: "+squareBumper3.getExactY());
+        squareBumper3 = new SquareBumper("sqaure3", 20, 20);
+        assertEquals(20,squareBumper3.getExactX());
+        assertEquals(20,squareBumper3.getExactY());
+        System.out.println("New X: "+squareBumper3.getExactX());
+        System.out.println("New Y: "+squareBumper3.getExactY());
+    }
+    @Test
+    public void testMoveAbsorber()
+    {
+        Absorber absorber3 = new Absorber("ab3", 25, 25, 25, 25);
+        assertTrue(absorber3== absorber3);
+        assertEquals(25,absorber3.getY());
+        assertEquals(25,absorber3.getX());
+        System.out.println("X: "+absorber3.getX());
+        System.out.println("Y: "+absorber3.getY());
+        absorber3 = new Absorber("ab3", 20, 20, 20, 20);
+        assertEquals(20,absorber3.getX());
+        assertEquals(20,absorber3.getY());
+        System.out.println("New X: "+absorber3.getX());
+        System.out.println("New Y: "+absorber3.getY());
+    }
+    @Test
+    public void testMoveFlipper()
+    {
+        Flipper flipper1 = new Flipper(22,22,22,90);
+        assertTrue( flipper1 == flipper1);
+        assertEquals(22,flipper1.getYpos());
+        assertEquals(22,flipper1.getXpos());
+        System.out.println("X: "+flipper1.getXpos());
+        System.out.println("Y: "+flipper1.getYpos());
+        flipper1 = new Flipper(30,30,30,180);
+        assertEquals(30,flipper1.getXpos());
+        assertEquals(30,flipper1.getYpos());
+        System.out.println("New X: "+flipper1.getXpos());
+        System.out.println("New Y: "+flipper1.getYpos());
+    }
+    @Test
+    public  void deleteBumper(){
+        ArrayList<SquareBumper> SBumper = new ArrayList<>();
+        assertTrue(SBumper.isEmpty());
+        SBumper.add(sb1);
+        SBumper.add(sb2);
+        System.out.println(SBumper.size());
+        assertTrue(SBumper != null);
+        SBumper.remove(sb1);
+        SBumper.remove(sb2);
+        System.out.println(SBumper.size());
+        assertTrue(SBumper.isEmpty());
+    }
+    @Test
+    public  void deleteFlipper(){
+        RightFlipper rightFlipper = new RightFlipper("rf1",35,10);
+        RightFlipper rightFlipper2 = new RightFlipper("rf2",40,15);
+        ArrayList<RightFlipper> rFlipper = new ArrayList<>();
+        assertTrue(rFlipper.isEmpty());
+        rFlipper.add(rightFlipper);
+        rFlipper.add(rightFlipper2);
+        assertFalse(rFlipper.isEmpty());
+        assertTrue(rFlipper != null);
+        System.out.println(rFlipper.size());
+        rFlipper.remove(rightFlipper);
+        System.out.println(rFlipper.size());
+        rFlipper.remove(rightFlipper2);
+        System.out.println(rFlipper.size());
+        assertTrue(rFlipper.isEmpty());
+    }
+    @Test
+    public void deleteAbsorber()
+    {
+    }
+    @Test
+    public void clearGameBoard(){
+        assertFalse(m !=null);
+        m.clearBoard();
+        assertTrue(m == null);
+    }
+}
+!= null);
+        assertFalse(triangleBumper == triangleBumper2);
+    }
+    @Test
+    /* Test to ensure no gizmos overlap in the same position */
+    public void testOverlapGizmos()
+    {
+        SquareBumper sb10 = new SquareBumper("sb1",12,12);
+        assertEquals(12,sb10.getExactX());
+        assertEquals(12, sb10.getExactY());
+        assertTrue(m.checkTaken(12, 12));
+    }
+    /* Test case for creating a flipper */
+    @Test
+    public void testCreateFlipper(){
+        Flipper flipper2 = new Flipper(25,25,25,25);
+        assertEquals(10,flipper.getXpos());
+        assertEquals(10,flipper.getYpos());
+        assertEquals(10,flipper.getWidth());
+        assertEquals(90,flipper.getDegree());
+        assertFalse(flipper == flipper2);
+        assertTrue(flipper != null);
+    }
+    /* Test case for creating the absorber */
+    @Test
+    public void testCreateAbsorber(){
+        Absorber absorber2 = new Absorber("absorber2", 15,15,15,15);
+        assertFalse(absorber == apackage Testing;
+import Model.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import physics.LineSegment;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
+public class TestGizmo {
+    Model m;
+    LineSegment lineSegment;
+    CircleBumper circleBumper1 = new CircleBumper("circle1", 20, 20);
+    CircleBumper circleBumper2;
+    TriangleBumper triangleBumper = new TriangleBumper("triangle1", 10, 10);
+    TriangleBumper triangleBumper2;
+    SquareBumper squareBumper1 = new SquareBumper("square1", 15, 15);
+    SquareBumper squareBumper2;
+    Flipper flipper = new Flipper(10,10, 10, 90);
+    Absorber absorber = new Absorber("absorber1", 10,10,10,10);
+    TriangleBumper t1 = new TriangleBumper("t1", 5, 5);
+    SquareBumper sb1 = new SquareBumper("sb1", 10, 10);
+    SquareBumper sb2 = new SquareBumper("sb1", 20, 20);
+    Ball ball = new Ball("ball1",20,20,10,10);
+    // Set up objects to be tested
+    public void setUp() {
+        m = new Model();
+        circleBumper2 = new CircleBumper("circle2", 10, 5);
+        triangleBumper2 = new TriangleBumper("traingle2", 5, 5);
+        squareBumper2 = new SquareBumper("square2", 5, 5);
+        m.addCircleBumper(12,12);
+    }
+    @Test
+    public void testCreateBall(){
+        assertEquals(6.25,ball.getRadius());
+        assertEquals(20,ball.getExactX());
+        assertEquals(20, ball.getExactY());
+        assertTrue(ball != null);
+        assertFalse(ball == ball);
+    }
+    /* Test case for creating a circle bumper */
+    @Test
+    public void testCreateCircleBumper()
+    {
+        assertNotNull(circleBumper1);
+        assertEquals(20,circleBumper1.getExactY());
+        assertEquals(20,circleBumper1.getExactX());
+        assertEquals(12.5D, circleBumper1.getRadius());
+        assertTrue(circleBumper1 != null);
+        assertFalse(circleBumper1 == circleBumper2);
+    }
+    @Test
+    public void testGitUpload(){
+
+    }
+
+    /* Test case for creating a square bumper */
+    @Test
+    public void testCreateSquareBumper()
+    {
+        assertEquals(15,squareBumper1.getExactX());
+        assertEquals(15,squareBumper1.getExactY());
+        assertEquals(0,squareBumper1.getRadius());
+        assertEquals(25,squareBumper1.getWidth());
+        assertTrue(squareBumper1 != null);
+        assertFalse(squareBumper1.equals(circleBumper1));
+        assertFalse(squareBumper1 == squareBumper2);
+    }
+    /* Test case for creating a Triangle bumper */
+    @Test
+    public void testCreateTriangleBumper()
+    {
+        assertEquals("triangle1",triangleBumper.getID());
+        assertEquals(10, triangleBumper.getExactX());
+        assertEquals(10, triangleBumper.getExactY());
+        assertTrue(triangleBumper != null);
+        assertFalse(triangleBumper == triangleBumper2);
+    }
+    @Test
+    /* Test to ensure no gizmos overlap in the same position */
+    public void testOverlapGizmos()
+    {
+        SquareBumper sb10 = new SquareBumper("sb1",12,12);
+        assertEquals(12,sb10.getExactX());
+        assertEquals(12, sb10.getExactY());
+        assertTrue(m.checkTaken(12, 12));
+    }
+    /* Test case for creating a flipper */
+    @Test
+    public void testCreateFlipper(){
+        Flipper flipper2 = new Flipper(25,25,25,25);
+        assertEquals(10,flipper.getXpos());
+        assertEquals(10,flipper.getYpos());
+        assertEquals(10,flipper.getWidth());
+        assertEquals(90,flipper.getDegree());
+        assertFalse(flipper == flipper2);
+        assertTrue(flipper != null);
+    }
+    /* Test case for creating the absorber */
+    @Test
+    public void testCreateAbsorber(){
+        Absorber absorber2 = new Absorber("absorber2", 15,15,15,15);
+        assertFalse(absorber == absorber2);
+        assertTrue(absorber != null);
+        assertEquals(10, absorber.getX());
+        assertEquals(10, absorber.getY());
+        assertEquals(10,absorber.getWidth());
+    }
+    /* Test Case for moving a bumper */
+    @Test
+    public void testMoveBumper(){
+        //String ID = "S" + x + y;
+        SquareBumper squareBumper3 = new SquareBumper("sqaure3", 10, 10);
+        assertTrue(squareBumper3 == squareBumper3);
+        assertEquals(10,squareBumper3.getExactX());
+        assertEquals(10,squareBumper3.getExactY());
+        System.out.println("X: "+squareBumper3.getExactX());
+        System.out.println("Y: "+squareBumper3.getExactY());
+        squareBumper3 = new SquareBumper("sqaure3", 20, 20);
+        assertEquals(20,squareBumper3.getExactX());
+        assertEquals(20,squareBumper3.getExactY());
+        System.out.println("New X: "+squareBumper3.getExactX());
+        System.out.println("New Y: "+squareBumper3.getExactY());
+    }
+    @Test
+    public void testMoveAbsorber()
+    {
+        Absorber absorber3 = new Absorber("ab3", 25, 25, 25, 25);
+        assertTrue(absorber3== absorber3);
+        assertEquals(25,absorber3.getY());
+        assertEquals(25,absorber3.getX());
+        System.out.println("X: "+absorber3.getX());
+        System.out.println("Y: "+absorber3.getY());
+        absorber3 = new Absorber("ab3", 20, 20, 20, 20);
+        assertEquals(20,absorber3.getX());
+        assertEquals(20,absorber3.getY());
+        System.out.println("New X: "+absorber3.getX());
+        System.out.println("New Y: "+absorber3.getY());
+    }
+    @Test
+    public void testMoveFlipper()
+    {
+        Flipper flipper1 = new Flipper(22,22,22,90);
+        assertTrue( flipper1 == flipper1);
+        assertEquals(22,flipper1.getYpos());
+        assertEquals(22,flipper1.getXpos());
+        System.out.println("X: "+flipper1.getXpos());
+        System.out.println("Y: "+flipper1.getYpos());
+        flipper1 = new Flipper(30,30,30,180);
+        assertEquals(30,flipper1.getXpos());
+        assertEquals(30,flipper1.getYpos());
+        System.out.println("New X: "+flipper1.getXpos());
+        System.out.println("New Y: "+flipper1.getYpos());
+    }
+    @Test
+    public  void deleteBumper(){
+        ArrayList<SquareBumper> SBumper = new ArrayList<>();
+        assertTrue(SBumper.isEmpty());
+        SBumper.add(sb1);
+        SBumper.add(sb2);
+        System.out.println(SBumper.size());
+        assertTrue(SBumper != null);
+        SBumper.remove(sb1);
+        SBumper.remove(sb2);
+        System.out.println(SBumper.size());
+        assertTrue(SBumper.isEmpty());
+    }
+    @Test
+    public  void deleteFlipper(){
+        RightFlipper rightFlipper = new RightFlipper("rf1",35,10);
+        RightFlipper rightFlipper2 = new RightFlipper("rf2",40,15);
+        ArrayList<RightFlipper> rFlipper = new ArrayList<>();
+        assertTrue(rFlipper.isEmpty());
+        rFlipper.add(rightFlipper);
+        rFlipper.add(rightFlipper2);
+        assertFalse(rFlipper.isEmpty());
+        assertTrue(rFlipper != null);
+        System.out.println(rFlipper.size());
+        rFlipper.remove(rightFlipper);
+        System.out.println(rFlipper.size());
+        rFlipper.remove(rightFlipper2);
+        System.out.println(rFlipper.size());
+        assertTrue(rFlipper.isEmpty());
+    }
+    @Test
+    public void deleteAbsorber()
+    {
+    }
+    @Test
+    public void clearGameBoard(){
+        assertFalse(m !=null);
+        m.clearBoard();
+        assertTrue(m == null);
+    }
+}
+bsorber2);
+        assertTrue(absorber != null);
+        assertEquals(10, absorber.getX());
+        assertEquals(10, absorber.getY());
+        assertEquals(10,absorber.getWidth());
+    }
+    /* Test Case for moving a bumper */
+    @Test
+    public void testMoveBumper(){
+        //String ID = "S" + x + y;
+        SquareBumper squareBumper3 = new SquareBumper("sqaure3", 10, 10);
+        assertTrue(squareBumper3 == squareBumper3);
+        assertEquals(10,squareBumper3.getExactX());
+        assertEquals(10,squareBumper3.getExactY());
+        System.out.println("X: "+squareBumper3.getExactX());
+        System.out.println("Y: "+squareBumper3.getExactY());
+        squareBumper3 = new SquareBumper("sqaure3", 20, 20);
+        assertEquals(20,squareBumper3.getExactX());
+        assertEquals(20,squareBumper3.getExactY());
+        System.out.println("New X: "+squareBumper3.getExactX());
+        System.out.println("New Y: "+squareBumper3.getExactY());
+    }
+    @Test
+    public void testMoveAbsorber()
+    {
+        Absorber absorber3 = new Absorber("ab3", 25, 25, 25, 25);
+        assertTrue(absorber3== absorber3);
+        assertEquals(25,absorber3.getY());
+        assertEquals(25,absorber3.getX());
+        System.out.println("X: "+absorber3.getX());
+        System.out.println("Y: "+absorber3.getY());
+        absorber3 = new Absorber("ab3", 20, 20, 20, 20);
+        assertEquals(20,absorber3.getX());
+        assertEquals(20,absorber3.getY());
+        System.out.println("New X: "+absorber3.getX());
+        System.out.println("New Y: "+absorber3.getY());
+    }
+    @Test
+    public void testMoveFlipper()
+    {
+        Flipper flipper1 = new Flipper(22,22,22,90);
+        assertTrue( flipper1 == flipper1);
+        assertEquals(22,flipper1.getYpos());
+        assertEquals(22,flipper1.getXpos());
+        System.out.println("X: "+flipper1.getXpos());
+        System.out.println("Y: "+flipper1.getYpos());
+        flipper1 = new Flipper(30,30,30,180);
+        assertEquals(30,flipper1.getXpos());
+        assertEquals(30,flipper1.getYpos());
+        System.out.println("New X: "+flipper1.getXpos());
+        System.out.println("New Y: "+flipper1.getYpos());
+    }
+    @Test
+    public  void deleteBumper(){
+        ArrayList<SquareBumper> SBumper = new ArrayList<>();
+        assertTrue(SBumper.isEmpty());
+        SBumper.add(sb1);
+        SBumper.add(sb2);
+        System.out.println(SBumper.size());
+        assertTrue(SBumper != null);
+        SBumper.remove(sb1);
+        SBumper.remove(sb2);
+        System.out.println(SBumper.size());
+        assertTrue(SBumper.isEmpty());
+    }
+    @Test
+    public  void deleteFlipper(){
+        RightFlipper rightFlipper = new RightFlipper("rf1",35,10);
+        RightFlipper rightFlipper2 = new RightFlipper("rf2",40,15);
+        ArrayList<RightFlipper> rFlipper = new ArrayList<>();
+        assertTrue(rFlipper.isEmpty());
+        rFlipper.add(rightFlipper);
+        rFlipper.add(rightFlipper2);
+        assertFalse(rFlipper.isEmpty());
+        assertTrue(rFlipper != null);
+        System.out.println(rFlipper.size());
+        rFlipper.remove(rightFlipper);
+        System.out.println(rFlipper.size());
+        rFlipper.remove(rightFlipper2);
+        System.out.println(rFlipper.size());
+        assertTrue(rFlipper.isEmpty());
+    }
+    @Test
+    public void deleteAbsorber()
+    {
+    }
+    @Test
+    public void clearGameBoard(){
+        assertFalse(m !=null);
+        m.clearBoard();
+        assertTrue(m == null);
+    }
+}
+
